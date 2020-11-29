@@ -36,65 +36,47 @@ assert wave(" gap ") ==  [" Gap ", " gAp ", " gaP "]
 '''
 
 
-def mexican_waving_blank():
-    def wave(people):
-        msg = input('Press enter: ')
-        wave = list(msg)
-        return f'("{msg}") == {wave}'
-    return wave(people=input('Mexican waving: '))
+# def mexican_waving_blank():
+#     def wave(people):
+#         msg = input('Press enter: ')
+#         wave = list(msg)
+#         return f'("{msg}") == {wave}'
+#     return wave(people=input('Mexican waving: '))
 
-print(mexican_waving_blank())
+# print(mexican_waving_blank())
 
 def single_words():
     def wave(people):
-        msg = str(input('Enter hello or codewars: '))
-
+        msg = str(input('Enter hello or codewars or any message: '))
         # The for loop it works for hello until if len(msg) > 4
         newmsg = []
         for x in range(len(msg)):
-            x = msg[0].upper() + msg[1:]
-            newmsg.append(x)
-            x = msg[0] + msg[1].upper() + msg[2:]
-            newmsg.append(x)
-            x = msg[0:2] + msg[2].upper() + msg[3:]
-            newmsg.append(x)
-            x = msg[0:3] + msg[3].upper() + msg[4:]
-            newmsg.append(x)
-            x = msg[0:4] + msg[4].upper()
-            newmsg.append(x)
+            if msg[x].isalpha():
+                uppIndex= msg[:x] + msg[x].upper() + msg[x+1:]
+                newmsg.append(uppIndex)
 
-            # here if the length of the word is longer then 4 until 8
-            if len(msg) > 5:
-                x = msg[0:5] + msg[5].upper() + msg[6:]
-                newmsg.append(x)
-                x = msg[0:6] + msg[6].upper() + msg[7:]
-                newmsg.append(x)
-                x = msg[0:7] + msg[7].upper()
-                newmsg.append(x)
-        sortmsg = sorted(list(set(newmsg)))
-
-        return f'("{msg}") == {sortmsg}'
+        return f'("{msg}") == {newmsg}'
     return wave(people=input('Press enter: '))
 
 print(single_words())
 
-def with_gap():
-    def wave(people):
-        msg = str(input('Enter ( gap ) start and end with empty space: '))
-      # is start with empty space
-        newmsg = []
+# def with_gap():
+#     def wave(people):
+#         msg = str(input('Enter ( gap ) start and end with empty space: '))
+#       # is start with empty space
+#         newmsg = []
 
-        for x in range(len(msg)):
-            x = msg[1].lstrip().upper() + msg[2:]
-            newmsg.append(x)
-            x = msg[0:1] + msg[2].upper() + msg[3:]
-            newmsg.append(x)
-            # x = msg[0:2] + msg[2].upper() #+ msg[4:]
-            # newmsg.append(x)
+#         for x in range(len(msg)):
+#             x = msg[1].lstrip().upper() + msg[2:]
+#             newmsg.append(x)
+#             x = msg[0:1] + msg[2].upper() + msg[3:]
+#             newmsg.append(x)
+#             # x = msg[0:2] + msg[2].upper() #+ msg[4:]
+#             # newmsg.append(x)
 
-        sortmsg = sorted(list(set(newmsg)))
+#         sortmsg = sorted(list(set(newmsg)))
 
-        return f'("{msg}") == {sortmsg}'
-    return wave(people=input('Press enter: '))
+#         return f'("{msg}") == {sortmsg}'
+#     return wave(people=input('Press enter: '))
 
-print(with_gap())
+# print(with_gap())
